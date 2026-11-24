@@ -1,5 +1,7 @@
 # Como contribuir
 
+Ao enviar uma contribuição, confirmas que tens autorização para a disponibilizar e concordas que ela seja incorporada e distribuída pela Forge Labs sob a licença vigente deste repositório. Uma contribuição não concede direitos sobre a marca, o serviço ou o código privado do Forge Mind.
+
 Obrigado por testares o Forge Mind Agent.
 
 ## Issues úteis
