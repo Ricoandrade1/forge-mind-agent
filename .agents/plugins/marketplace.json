@@ -1,0 +1,20 @@
+{
+  "name": "forge-labs",
+  "interface": {
+    "displayName": "Forge Labs"
+  },
+  "plugins": [
+    {
+      "name": "forge-mind",
+      "source": {
+        "source": "local",
+        "path": "./plugins/forge-mind"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
