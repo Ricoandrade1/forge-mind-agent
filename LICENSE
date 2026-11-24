@@ -1,21 +1,100 @@
-MIT License
+Forge Labs Skill Use License 1.0
 
-Copyright (c) 2026 Forge Labs
+Copyright (c) 2026 Forge Labs. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This license applies to the Forge Mind agent plugin, skills, configuration,
+documentation, artwork, and other files distributed in this repository
+(collectively, the "Software").
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. PERMITTED USE
+
+Forge Labs grants you a limited, non-exclusive, non-transferable license to:
+
+a. download and install the Software;
+b. make the copies automatically required for installation, execution, and
+   reasonable backup;
+c. use the Software, without a separate license fee, for personal use or for
+   internal business workflows;
+d. use the Software to connect your own authorized account to the official
+   Forge Mind service operated by Forge Labs;
+e. inspect the source code for security review, learning, testing, and the
+   preparation of contributions to this repository; and
+f. create a public GitHub fork solely for evaluation or for proposing changes
+   back to this repository, subject to GitHub's terms and this license.
+
+You may make local modifications only when reasonably necessary to configure
+the Software for the official Forge Mind service. You may not distribute those
+modifications without prior written permission from Forge Labs.
+
+2. RESTRICTIONS
+
+Unless Forge Labs gives you prior written permission, you may not:
+
+a. sell, rent, lease, sublicense, license, or charge for the Software;
+b. redistribute, republish, mirror, or make the Software or a modified version
+   available as a separate product or download;
+c. use the Software, in whole or in substantial part, to build, operate, or
+   support a competing memory, knowledge-map, agent-memory, or hosted service;
+d. modify the Software to connect it to an unauthorized copy, clone, or
+   substitute for the official Forge Mind service;
+e. remove or alter copyright, license, attribution, security, or branding
+   notices;
+f. use the Forge Labs, Forge Mind, or related names, logos, humanoid artwork,
+   visual identity, or trademarks in a way that suggests endorsement,
+   affiliation, or origin; or
+g. bypass access controls, usage limits, authentication, or security measures,
+   or attempt to obtain the private server source code, credentials, or data.
+
+3. OFFICIAL SERVICE AND USER DATA
+
+This license grants no rights to the Forge Mind backend, database,
+infrastructure, private source code, models, user accounts, user content,
+credentials, or service data. Access to the official service is governed by
+the Forge Mind terms of use and privacy policy.
+
+4. OWNERSHIP
+
+The Software is licensed, not sold. Forge Labs retains all ownership and
+intellectual-property rights not expressly granted by this license.
+
+5. BRAND AND TRADEMARKS
+
+No trademark or brand license is granted. Permitted installation and use of
+the unmodified Software may display the original Forge Mind branding. Any
+other use requires prior written permission from Forge Labs.
+
+6. TERMINATION
+
+This license terminates automatically if you breach its terms. After
+termination, you must stop using and distributing the Software and delete all
+copies, except where retention is required by law. Sections concerning
+ownership, restrictions, disclaimers, liability, and governing law survive.
+
+7. DISCLAIMER
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+8. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, FORGE LABS AND ITS CONTRIBUTORS WILL
+NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY,
+OR PUNITIVE DAMAGES, OR FOR LOSS OF DATA, PROFITS, REVENUE, OR BUSINESS,
+ARISING FROM OR RELATED TO THE SOFTWARE OR ITS USE.
+
+9. GOVERNING LAW
+
+This license is governed by the laws of Portugal. Subject to mandatory
+consumer-protection rules, the courts of Braga, Portugal, have exclusive
+jurisdiction over disputes arising from this license.
+
+10. EARLIER RELEASES
+
+This license applies to the repository versions first published with this
+license and to later versions unless stated otherwise. Versions previously
+published under the MIT License remain subject to the license that accompanied
+those versions.
+
+For commercial redistribution, integration licensing, or other permissions,
+contact Forge Labs at ricoandrade01@gmail.com.
