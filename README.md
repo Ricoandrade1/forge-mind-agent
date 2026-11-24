@@ -190,12 +190,22 @@ Este repositório distribui o plugin e documenta a integração com o servidor r
 
 Se encontrares um problema, abre uma issue sem incluir chaves, tokens, dados pessoais ou conteúdo privado dos teus mapas.
 
+## Licença e utilização
+
+A skill continua disponível para baixar, instalar e usar gratuitamente com o serviço oficial Forge Mind, tanto em uso pessoal como nos fluxos internos de uma empresa.
+
+O código deste repositório não pode ser revendido, redistribuído como outro produto, rebatizado ou utilizado para criar um serviço concorrente sem autorização escrita da Forge Labs. A marca, os logótipos, o humanoide e a identidade Forge Mind não fazem parte de uma licença aberta.
+
+Consulta a [Forge Labs Skill Use License 1.0](LICENSE) e as [regras de marca](TRADEMARKS.md).
+
 ## Documentação e segurança
 
 - [Arquitetura técnica](docs/ARCHITECTURE.md)
 - [Guia de testes](docs/TESTING.md)
 - [Como contribuir](CONTRIBUTING.md)
 - [Política de segurança](SECURITY.md)
+- [Licença de utilização](LICENSE)
+- [Marcas e identidade](TRADEMARKS.md)
 - [Privacidade](https://mind.forgelabs.pt/privacy.html)
 - [Termos de utilização](https://mind.forgelabs.pt/terms.html)
 
