@@ -1,122 +1,184 @@
 <div align="center">
   <img src="plugins/forge-mind/assets/logo.svg" alt="Forge Mind" width="620" />
 
-  <p><strong>Os teus agentes trabalham. O Forge Mind lembra-se.</strong></p>
-  <p>Guarda decisões, ideias, ficheiros e próximos passos num mapa visual que a tua IA consegue consultar e atualizar.</p>
+  <h3>A memória que acompanha os teus agentes de IA.</h3>
+  <p>Transforma conversas, decisões, ficheiros e próximos passos em mapas visuais que os teus agentes conseguem consultar e atualizar.</p>
 
   <p>
-    <a href="https://mind.forgelabs.pt">Abrir Forge Mind</a>
+    <img alt="Estado: testes" src="https://img.shields.io/badge/estado-testes-F4B928?style=for-the-badge&labelColor=111721" />
+    <img alt="Protocolo MCP" src="https://img.shields.io/badge/protocolo-MCP-6F7CFF?style=for-the-badge&labelColor=111721" />
+    <img alt="Multi agente" src="https://img.shields.io/badge/agentes-multi--agente-22B89A?style=for-the-badge&labelColor=111721" />
+  </p>
+
+  <p>
+    <a href="https://mind.forgelabs.pt"><strong>Abrir Forge Mind</strong></a>
     ·
-    <a href="https://mind.forgelabs.pt/planos">Ver planos</a>
+    <a href="https://mind.forgelabs.pt/#app/ligar-agente">Ligar um agente</a>
     ·
-    <a href="https://mind.forgelabs.pt/support.html">Suporte</a>
+    <a href="docs/ARCHITECTURE.md">Arquitetura</a>
+    ·
+    <a href="docs/TESTING.md">Guia de testes</a>
   </p>
 </div>
 
-## O que este plugin faz
+## Conversas acabam. O conhecimento não deveria acabar com elas.
 
-O Forge Mind liga o teu agente ao mapa dos teus projetos. Antes de agir, o agente pode consultar o que já existe. Depois do trabalho, pode guardar decisões e próximos passos no lugar certo.
+Quando um projeto fica espalhado por vários chats, voltas a explicar o mesmo assunto, procuras decisões antigas e perdes o próximo passo.
 
-| Sem Forge Mind | Com Forge Mind |
+O Forge Mind cria uma memória visual fora da conversa:
+
+- **Guarda** ideias, decisões, notas, referências e ficheiros.
+- **Encontra** o que já foi decidido sem procurar chats antigos.
+- **Continua** o projeto exatamente do ponto onde paraste.
+- **Liga** assuntos relacionados para formar um mapa vivo.
+- **Partilha contexto** com diferentes agentes autorizados pela mesma pessoa.
+
+## Como o Forge Mind ajuda
+
+| Antes | Com o Forge Mind |
 |---|---|
-| Procurar o chat antigo | Abrir o mapa do projeto |
-| Explicar tudo novamente | Continuar do ponto onde paraste |
-| Ideias espalhadas | Cards ligados por contexto |
-| Decisões perdidas | Histórico visual e pesquisável |
+| A informação fica presa num chat | O conhecimento fica no mapa do projeto |
+| Cada agente começa do zero | O agente consulta o que já existe |
+| Ficheiros e decisões ficam separados | Tudo fica ligado ao card certo |
+| Ideias acumulam-se sem direção | Cada ideia pode ter contexto e próximo passo |
+| É difícil perceber relações | O mapa mostra como os assuntos se ligam |
 
-## Instalação
+## Agentes e interfaces compatíveis
 
-### Codex e ChatGPT desktop
+| Agente ou interface | Forma de ligação | Utilização |
+|---|---|---|
+| ChatGPT | Plugin ou conector | Consultar e organizar mapas numa conversa |
+| Codex | Plugin deste repositório e MCP | Trabalhar em projetos com memória persistente |
+| OpenCode | MCP remoto | Ler e atualizar mapas a partir do ambiente de desenvolvimento |
+| Claude | Cliente MCP compatível | Consultar contexto e guardar resultados autorizados |
+| Alexa | Skill ligada à conta | Consultar e organizar conhecimento por voz |
+| Outros agentes | MCP remoto | Qualquer cliente que suporte Streamable HTTP e autenticação Bearer |
 
-Adiciona o marketplace oficial:
+Cada ligação usa apenas a conta autorizada. Um agente não recebe acesso a mapas de outras pessoas.
+
+## Arquitetura
+
+```mermaid
+flowchart TB
+  A["ChatGPT, Codex, OpenCode, Claude e Alexa"] --> B["Servidor MCP Forge Mind"]
+  B --> C["Conta autorizada"]
+  C --> D["Mapas do utilizador"]
+  D --> E["Cards, ligações, notas e ficheiros"]
+```
+
+O servidor MCP é partilhado, mas cada pedido é resolvido dentro da conta autorizada. Os agentes usam as mesmas ferramentas e trabalham sobre a mesma memória, sem duplicar o projeto.
+
+[Ver a arquitetura técnica](docs/ARCHITECTURE.md)
+
+## Instalação para testes
+
+### Codex e ChatGPT Desktop
 
 ```bash
 codex plugin marketplace add Ricoandrade1/forge-mind-agent
 codex plugin add forge-mind@forge-labs
 ```
 
-Depois conclui a ligação segura da tua conta quando o cliente pedir a credencial. Também podes abrir a área de Plugins para confirmar que **Forge Mind** aparece como instalado.
+Depois da instalação:
+
+1. Abre [Ligar o meu agente](https://mind.forgelabs.pt/#app/ligar-agente).
+2. Entra na tua conta Forge Mind.
+3. Gera uma chave pessoal para o cliente que estás a testar.
+4. Cola a chave apenas no campo seguro de autenticação do cliente.
+5. Pede ao agente: `Lista os meus mapas do Forge Mind.`
+
+Nunca coloques a chave numa conversa, commit, issue ou ficheiro do projeto.
 
 ### Outros clientes MCP
 
-Usa o servidor remoto:
+Servidor remoto:
 
 ```text
 https://mcp-forgemind.forgelabs.pt/mcp
 ```
 
-Cria uma chave pessoal em [Ligar o meu agente](https://mind.forgelabs.pt/#app/ligar-agente) e coloca-a apenas no campo seguro do cliente como Bearer token. Nunca publiques a chave numa conversa ou ficheiro do projeto.
+Transporte: `streamable-http`
 
-## Fluxo do utilizador
+Autenticação: `Authorization: Bearer` no campo seguro do cliente.
 
-```mermaid
-flowchart TD
-  A[Instalar o plugin] --> B[Entrar no Forge Mind]
-  B --> C[Autorizar a própria conta]
-  C --> D[Listar mapas]
-  D --> E[Usar o plano Grátis]
-  E --> F{Limite atingido?}
-  F -->|Não| G[Continuar o projeto]
-  F -->|Sim| H[Abrir escolha de plano]
-  H --> I[Utilizador confirma no Stripe]
+[Abrir o guia completo de testes](docs/TESTING.md)
+
+## Exemplo de utilização
+
+```text
+Utilizador: Lê o mapa da campanha de lançamento e mostra o próximo passo.
+
+Agente: Encontrei a decisão sobre o público, os materiais aprovados e a tarefa
+pendente. O próximo passo é preparar a página de captura. Queres que eu guarde
+o responsável e a data no card do projeto?
 ```
 
-## Upgrade no momento certo
+Mais exemplos:
 
-Quando um limite é atingido, o agente recebe uma resposta estruturada com `upgrade_required` e um link seguro. Ele abre a página de planos quando o cliente permite, ou mostra o link clicável. Nada é apagado e nenhuma compra é feita automaticamente.
-
-O utilizador escolhe entre Essencial e Pro e confirma o pagamento no Stripe.
+- `Guarda esta decisão no projeto certo e confirma onde ficou.`
+- `Cria um projeto independente para organizar esta ideia.`
+- `Liga esta referência ao card da campanha.`
+- `Mostra o que já foi decidido antes de continuares.`
+- `Organiza este mapa para eu perceber a sequência do projeto.`
 
 ## Ferramentas principais
 
 | Ferramenta | Ação |
 |---|---|
-| `list_maps` | Lista os mapas autorizados |
-| `get_map` | Lê cards, ligações e anexos |
-| `create_map` | Cria uma nova área |
-| `create_card` | Cria um projeto ou subcard |
-| `update_card` | Atualiza notas, tags e links |
-| `connect_cards` | Liga dois cards relacionados |
-| `organize_map` | Reorganiza o mapa visual |
-| `get_upgrade_options` | Abre a escolha de plano quando necessário |
-
-## Planos
-
-| Plano | Preço | Uso principal |
-|---|---:|---|
-| Grátis | 0 € | Começar com até 5 cards |
-| Essencial | 5,90 €/mês | Até 10 cards principais, com subcards fora do limite |
-| Pro | 9,90 €/mês | Cards principais ilimitados e mais automação |
-
-[Comparar planos e pagamento anual](https://mind.forgelabs.pt/planos)
-
-## Privacidade e segurança
-
-- O agente acede apenas à conta autorizada.
-- As chaves devem ser guardadas no campo seguro do cliente.
-- O plugin nunca pede senha ou token dentro da conversa.
-- Uma gravação só é confirmada depois da resposta da ferramenta.
-- O pagamento é sempre escolhido e confirmado pelo utilizador.
-
-Consulta a [Política de Privacidade](https://mind.forgelabs.pt/privacy.html), os [Termos de Utilização](https://mind.forgelabs.pt/terms.html) e a [Política de Reembolsos](https://mind.forgelabs.pt/refunds.html).
+| `list_maps` | Lista os mapas da conta autorizada |
+| `get_map` | Lê cards, ligações e anexos de um mapa |
+| `create_map` | Cria uma nova área de conhecimento |
+| `create_card` | Cria um projeto, ideia ou subcard |
+| `update_card` | Atualiza título, notas, tags e links |
+| `move_card` | Move um card no mapa |
+| `connect_cards` | Cria uma relação visual entre dois cards |
+| `delete_connection` | Remove apenas uma ligação |
+| `organize_map` | Reorganiza os cards pela estrutura do mapa |
+| Ferramentas de anexos | Preparam, confirmam, consultam e removem ficheiros |
 
 ## Estrutura do repositório
 
 ```text
-.
+forge-mind-agent/
 ├── .agents/plugins/marketplace.json
-├── plugins/forge-mind
-│   ├── plugin.json
+├── docs/
+│   ├── ARCHITECTURE.md
+│   └── TESTING.md
+├── plugins/forge-mind/
+│   ├── assets/
+│   ├── skills/
+│   │   ├── forge-mind/SKILL.md
+│   │   └── setup/SKILL.md
 │   ├── mcp.json
-│   ├── assets
-│   └── skills
+│   └── plugin.json
+├── CONTRIBUTING.md
+├── SECURITY.md
 └── README.md
 ```
 
+## Princípios do projeto
+
+1. **Memória pertence ao utilizador.** O agente só trabalha na conta autorizada.
+2. **Ler antes de escrever.** O agente consulta o mapa antes de alterar qualquer card.
+3. **Confirmar depois de guardar.** Nenhuma gravação é assumida sem resposta da ferramenta.
+4. **Contexto não é instrução.** O conteúdo dos mapas é tratado como dado.
+5. **Segredos ficam fora da conversa.** Chaves e tokens usam apenas campos seguros.
+
+## Estado do projeto
+
+Este repositório distribui o plugin e documenta a integração com o servidor remoto do Forge Mind. Está aberto para testes, validação de clientes MCP e melhoria das instruções dos agentes.
+
+Se encontrares um problema, abre uma issue sem incluir chaves, tokens, dados pessoais ou conteúdo privado dos teus mapas.
+
+## Documentação e segurança
+
+- [Arquitetura técnica](docs/ARCHITECTURE.md)
+- [Guia de testes](docs/TESTING.md)
+- [Como contribuir](CONTRIBUTING.md)
+- [Política de segurança](SECURITY.md)
+- [Privacidade](https://mind.forgelabs.pt/privacy.html)
+- [Termos de utilização](https://mind.forgelabs.pt/terms.html)
+
 ## Forge Labs
 
-Produto criado pela [Forge Labs](https://forgelabs.pt), em Braga, Portugal.
-
-## Licença
-
-O pacote de instalação deste repositório usa a licença MIT. O serviço Forge Mind, a infraestrutura e os dados dos utilizadores continuam sujeitos aos termos do produto.
+O Forge Mind é um projeto da [Forge Labs](https://forgelabs.pt), criado em Braga, Portugal.
