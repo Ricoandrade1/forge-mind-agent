@@ -52,13 +52,24 @@ O token nunca deve aparecer em conversas, logs públicos, commits ou issues.
 
 ## Fluxo de uma operação
 
-1. O utilizador pede uma ação ao agente.
+1. O utilizador inicia um trabalho relevante, mesmo sem mencionar o Forge Mind.
 2. O agente chama `list_maps` para localizar a área correta.
 3. O agente chama `get_map` para ler o estado atual.
-4. O agente executa apenas a alteração pedida.
-5. O servidor valida a conta e os argumentos.
-6. O Forge Mind guarda a alteração.
-7. O agente relê o mapa e confirma o resultado.
+4. O agente executa o trabalho usando a memória encontrada.
+5. Antes de terminar, atualiza a decisão, o resultado e o próximo passo no card correto.
+6. O servidor valida a conta e os argumentos.
+7. O Forge Mind guarda a alteração.
+8. O agente relê o mapa e confirma o resultado.
+
+## Ciclo de memória automática
+
+O comportamento é definido em três camadas complementares:
+
+- A skill instalada ativa o protocolo em trabalhos relevantes.
+- O servidor MCP devolve a mesma instrução durante a inicialização.
+- O comando de ligação ensina o cliente a consultar antes e atualizar depois.
+
+O protocolo respeita a hierarquia de instruções do cliente. Uma instrução explícita do utilizador para não consultar ou não guardar tem prioridade sobre a memória automática.
 
 ## Modelo de dados apresentado ao agente
 
@@ -86,6 +97,8 @@ Ligam ficheiros autorizados ao card correto. Os URLs de acesso são temporários
 - Alterações destrutivas exigem um pedido claro do utilizador.
 - Uma operação falhada nunca é apresentada como concluída.
 - O agente não afirma acesso a outros chats ou contas.
+- O agente evita duplicações, preferindo atualizar um card existente.
+- O agente não guarda senhas, chaves, tokens, cookies ou códigos de sessão.
 
 ## Organização do pacote
 
