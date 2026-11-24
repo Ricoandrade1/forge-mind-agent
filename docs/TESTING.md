@@ -32,6 +32,23 @@ Lista os meus mapas do Forge Mind.
 
 O teste está correto quando o agente devolve apenas os mapas da conta autorizada.
 
+## Teste de memória automática
+
+Depois de confirmar a ligação, inicia uma conversa nova e pede uma tarefa relacionada com um projeto já guardado, sem escrever as palavras Forge Mind.
+
+```text
+Continua a campanha do cliente e prepara o próximo passo.
+```
+
+O teste está correto quando o agente:
+
+1. Usa `list_maps` e `get_map` antes de começar.
+2. Trabalha com as decisões já guardadas.
+3. Atualiza o card correto com o resultado e o próximo passo antes de terminar.
+4. Relê o mapa e confirma a atualização.
+
+Repete o teste com uma pergunta geral sem relação com projetos ou memória pessoal. Nesse caso, o agente não deve consultar o Forge Mind.
+
 ## Teste de leitura
 
 ```text
