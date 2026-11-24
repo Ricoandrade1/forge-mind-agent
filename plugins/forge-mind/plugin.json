@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "forge-mind",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Guarda decisões, ideias e próximos passos num mapa que os teus agentes conseguem consultar e atualizar.",
   "author": {
     "name": "Forge Labs",
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "Forge Mind",
         "shortDescription": "Memória visual para os teus agentes",
-        "longDescription": "Transforma conversas com IA em mapas de ação. O agente consulta o que já ficou decidido, guarda o que fez e continua o projeto sem procurar chats antigos.",
+        "longDescription": "Transforma conversas com IA em mapas de ação. Em trabalhos relevantes, o agente consulta automaticamente o que já ficou decidido, usa essa memória e guarda o resultado para a próxima conversa.",
         "developerName": "Forge Labs",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
