@@ -1,0 +1,39 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "forge-mind",
+  "version": "0.1.0",
+  "description": "Guarda decisões, ideias e próximos passos num mapa que os teus agentes conseguem consultar e atualizar.",
+  "author": {
+    "name": "Forge Labs",
+    "email": "ricoandrade01@gmail.com",
+    "url": "https://forgelabs.pt"
+  },
+  "homepage": "https://mind.forgelabs.pt",
+  "repository": "https://github.com/Ricoandrade1/forge-mind-agent",
+  "license": "MIT",
+  "keywords": ["memoria", "agentes", "ia", "mcp", "mapas", "produtividade"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "Forge Mind",
+        "shortDescription": "Memória visual para os teus agentes",
+        "longDescription": "Transforma conversas com IA em mapas de ação. O agente consulta o que já ficou decidido, guarda o que fez e continua o projeto sem procurar chats antigos.",
+        "developerName": "Forge Labs",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://mind.forgelabs.pt",
+        "privacyPolicyURL": "https://mind.forgelabs.pt/privacy.html",
+        "termsOfServiceURL": "https://mind.forgelabs.pt/terms.html",
+        "defaultPrompt": [
+          "Lista os meus mapas do Forge Mind.",
+          "Lê o mapa deste projeto e mostra o próximo passo.",
+          "Guarda esta decisão no projeto certo e confirma o que foi alterado."
+        ],
+        "brandColor": "#F4B928",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/logo.svg"
+      }
+    }
+  }
+}
