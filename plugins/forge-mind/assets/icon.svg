@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Forge Mind</title>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#342915"/>
+      <stop offset="1" stop-color="#0b0f15"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <path d="M64 24v20M38 56h52M38 56v21M90 56v21M64 44v44" fill="none" stroke="#f4b928" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="53" y="18" width="22" height="22" rx="5" fill="#111721" stroke="#ffd052" stroke-width="5"/>
+  <rect x="27" y="76" width="22" height="22" rx="5" fill="#111721" stroke="#ffd052" stroke-width="5"/>
+  <rect x="53" y="87" width="22" height="22" rx="5" fill="#111721" stroke="#ffd052" stroke-width="5"/>
+  <rect x="79" y="76" width="22" height="22" rx="5" fill="#111721" stroke="#ffd052" stroke-width="5"/>
+</svg>
