@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "forge-mind",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Guarda decisões, ideias e próximos passos num mapa que os teus agentes conseguem consultar e atualizar.",
   "author": {
     "name": "Forge Labs",
@@ -10,7 +10,7 @@
   },
   "homepage": "https://mind.forgelabs.pt",
   "repository": "https://github.com/Ricoandrade1/forge-mind-agent",
-  "license": "MIT",
+  "license": "LicenseRef-Forge-Labs-Skill-Use-1.0",
   "keywords": ["memoria", "agentes", "ia", "mcp", "mapas", "produtividade"],
   "extensions": {
     "com.openai": {
