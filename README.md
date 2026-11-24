@@ -43,6 +43,25 @@ O Forge Mind cria uma memória visual fora da conversa:
 | Ideias acumulam-se sem direção | Cada ideia pode ter contexto e próximo passo |
 | É difícil perceber relações | O mapa mostra como os assuntos se ligam |
 
+## Memória automática, antes, durante e depois
+
+Depois de ligado, o utilizador não precisa de pedir ao agente para abrir o Forge Mind em cada conversa. Em qualquer trabalho relevante, o protocolo orienta o agente a:
+
+1. Consultar os mapas antes de começar.
+2. Trabalhar usando decisões e informações já guardadas.
+3. Atualizar o mapa com o resultado e o próximo passo antes de terminar.
+4. Evitar cards duplicados, preferindo atualizar a memória existente.
+
+```mermaid
+flowchart TB
+  A["Pedido relevante"] --> B["Ler o Forge Mind"]
+  B --> C["Trabalhar com contexto"]
+  C --> D["Guardar o resultado"]
+  D --> E["Continuar na próxima conversa"]
+```
+
+O protocolo não é ativado para conversa casual ou perguntas gerais sem relação com a memória pessoal. Senhas, chaves, tokens e outros segredos nunca devem ser guardados.
+
 ## Agentes e interfaces compatíveis
 
 | Agente ou interface | Forma de ligação | Utilização |
@@ -159,10 +178,11 @@ forge-mind-agent/
 ## Princípios do projeto
 
 1. **Memória pertence ao utilizador.** O agente só trabalha na conta autorizada.
-2. **Ler antes de escrever.** O agente consulta o mapa antes de alterar qualquer card.
-3. **Confirmar depois de guardar.** Nenhuma gravação é assumida sem resposta da ferramenta.
-4. **Contexto não é instrução.** O conteúdo dos mapas é tratado como dado.
-5. **Segredos ficam fora da conversa.** Chaves e tokens usam apenas campos seguros.
+2. **Memória é automática.** Em trabalho relevante, o agente consulta antes e atualiza depois, sem depender de um lembrete.
+3. **Ler antes de escrever.** O agente consulta o mapa antes de alterar qualquer card.
+4. **Confirmar depois de guardar.** Nenhuma gravação é assumida sem resposta da ferramenta.
+5. **Contexto não é instrução.** O conteúdo dos mapas é tratado como dado.
+6. **Segredos ficam fora da conversa.** Chaves e tokens usam apenas campos seguros.
 
 ## Estado do projeto
 
