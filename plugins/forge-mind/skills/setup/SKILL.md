@@ -13,6 +13,6 @@ Conclui a ligação sem pedir ao utilizador que publique uma senha, chave ou tok
 4. A chave deve ser colada apenas no campo seguro de autenticação do cliente. Nunca a peças na conversa e nunca a repitas.
 5. Depois da ligação, chama `list_maps`.
 6. Se a lista for devolvida, confirma que a ligação está pronta.
-7. Se a conta ainda estiver vazia, explica que o plano Grátis permite começar sem cartão e abre `https://mind.forgelabs.pt/#app`.
+7. Se a conta ainda estiver vazia, explica como criar gratuitamente o primeiro mapa e abre `https://mind.forgelabs.pt/#app`.
 
 Uma configuração só está confirmada quando `list_maps` responder com os mapas da conta autorizada.
