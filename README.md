@@ -122,8 +122,8 @@ A instalação só está concluída quando a skill estiver disponível. A ligaç
 ### Comportamento por cliente
 
 - **Claude.ai:** não clones para uma pasta temporária. Baixa [forge-mind-skill.zip](https://mind.forgelabs.pt/forge-mind-skill.zip), envia em Definições, Capacidades, Skills, Upload Skill e, depois da confirmação, liga a conta pelo conector compatível.
-- **Gemini CLI:** instala em `~/.gemini/skills/forge-mind` ou `~/.agents/skills/forge-mind`, executa `/skills reload`, confirma em `/skills list` e só depois adiciona a ligação.
-- **Gemini web:** tenta primeiro a Skill persistente. Se o produto não oferecer essa instalação, usa Aplicações ligadas, Aplicações personalizadas quando esse menu estiver disponível. Se a conta ou região não oferecer aplicações personalizadas, encaminha diretamente para o Gemini CLI.
+- **Gemini CLI:** clona o repositório para uma pasta normal. Depois liga apenas `plugins/forge-mind/skills/forge-mind` com `/skills link <caminho>/plugins/forge-mind/skills/forge-mind --scope user`, executa `/skills reload`, confirma em `/skills list` e só depois adiciona a ligação.
+- **Gemini App móvel ou web:** nunca mostra comandos Bash, `git clone`, caminhos `~/.gemini`, `/skills` ou `gemini mcp`. No computador, usa Definições, Aplicações ligadas, Aplicações personalizadas para adicionar o servidor. Se esse menu não existir, informa que a conta ou região ainda não suporta a ligação no Gemini App.
 - **Codex e OpenCode:** copia a Skill para o diretório persistente de Skills, confirma o ficheiro e só depois cria a ligação solicitada.
 - **Outros agentes:** tenta primeiro a instalação persistente da Skill. Se não for suportada, avança para o plugin nativo ou ligação compatível sem terminar com uma lista de escolhas.
 
