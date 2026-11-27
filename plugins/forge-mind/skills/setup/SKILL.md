@@ -15,9 +15,19 @@ A primeira tentativa é sempre instalar a skill. Não comeces por configurar MCP
 4. Se o cliente aceitar esta skill de configuração separadamente, instala também `plugins/forge-mind/skills/setup`.
 5. Só depois de confirmar a skill, tenta instalar o plugin nativo Forge Mind.
 6. Se o plugin nativo estiver inválido, indisponível ou ainda não aprovado, mantém a skill instalada. Não mudes automaticamente para MCP manual.
-7. Usa uma configuração MCP manual apenas quando a skill já estiver instalada, o cliente exigir essa ligação e o utilizador autorizar.
+7. Usa uma configuração MCP manual apenas quando a skill já estiver instalada, ou quando o cliente tiver confirmado que não suporta Skills persistentes e exigir essa ligação.
+8. Uma cópia numa pasta temporária não conta como instalação.
+9. Se não houver escrita persistente, não pares e não devolvas uma lista de escolhas. Avança automaticamente para o próximo método compatível e pede apenas a ação manual indispensável ao utilizador.
 
 Nunca declares a skill instalada sem confirmar a cópia ou o registo no cliente.
+
+## Fluxos específicos
+
+- No Claude.ai, não clones para uma pasta temporária. Orienta uma única ação: enviar o ficheiro `https://mind.forgelabs.pt/forge-mind-skill.zip` em Definições, Capacidades, Skills, Upload Skill. Depois da confirmação, continua automaticamente para o conector da conta.
+- No Gemini CLI, instala em `~/.gemini/skills/forge-mind` ou `~/.agents/skills/forge-mind`, executa `/skills reload` e confirma com `/skills list`. Depois adiciona a ligação MCP compatível e testa `list_maps`.
+- No Gemini web, não afirmes que instalaste uma Skill local. Se Aplicações personalizadas estiver disponível, adiciona o servidor do Forge Mind. Caso contrário, informa o limite e encaminha diretamente para o Gemini CLI.
+- Em Codex, OpenCode e clientes com escrita persistente, copia primeiro a Skill e confirma o `SKILL.md`.
+- Em qualquer cliente, não pares apenas porque a primeira forma de instalação não está disponível.
 
 ## Ligar a conta
 
