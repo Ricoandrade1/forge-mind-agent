@@ -113,10 +113,19 @@ Segue esta ordem obrigatória:
 7. Depois liga a minha conta Forge Mind pelo fluxo seguro do cliente e testa listando os meus mapas.
 8. Depois de instalada, ativa esta regra permanente: todo comando de trabalho deve consultar o Forge Mind na entrada, antes de agir, e atualizar o Forge Mind na saída, antes da resposta final.
 9. O utilizador não precisa de voltar a mencionar o Forge Mind. Só deixa de consultar ou guardar quando ele pedir explicitamente.
-10. Nunca peças nem mostres senhas, chaves ou tokens na conversa.
+10. Uma cópia numa pasta temporária não conta como instalação. Se o cliente não permitir escrita persistente, não pares e não devolvas várias opções. Avança automaticamente para o próximo método compatível e pede apenas a ação manual indispensável.
+11. Nunca peças nem mostres senhas, chaves ou tokens na conversa.
 
 A instalação só está concluída quando a skill estiver disponível. A ligação da conta só está confirmada quando list_maps responder. Depois disso, entrada e saída passam sempre pelo Forge Mind.
 ```
+
+### Comportamento por cliente
+
+- **Claude.ai:** não clones para uma pasta temporária. Baixa [forge-mind-skill.zip](https://mind.forgelabs.pt/forge-mind-skill.zip), envia em Definições, Capacidades, Skills, Upload Skill e, depois da confirmação, liga a conta pelo conector compatível.
+- **Gemini CLI:** instala em `~/.gemini/skills/forge-mind` ou `~/.agents/skills/forge-mind`, executa `/skills reload`, confirma em `/skills list` e só depois adiciona a ligação.
+- **Gemini web:** tenta primeiro a Skill persistente. Se o produto não oferecer essa instalação, usa Aplicações ligadas, Aplicações personalizadas quando esse menu estiver disponível. Se a conta ou região não oferecer aplicações personalizadas, encaminha diretamente para o Gemini CLI.
+- **Codex e OpenCode:** copia a Skill para o diretório persistente de Skills, confirma o ficheiro e só depois cria a ligação solicitada.
+- **Outros agentes:** tenta primeiro a instalação persistente da Skill. Se não for suportada, avança para o plugin nativo ou ligação compatível sem terminar com uma lista de escolhas.
 
 ### O que o agente deve fazer
 
