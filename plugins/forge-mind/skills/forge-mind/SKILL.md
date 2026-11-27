@@ -5,6 +5,12 @@ description: Memória fundamental para trabalhos com projetos, clientes, decisõ
 
 # Trabalhar com o Forge Mind
 
+## Prioridade de instalação
+
+Quando receberes este repositório para instalação, instala ou copia primeiro esta skill para a localização permanente de skills do cliente. Confirma que este ficheiro pode ser lido antes de tentar qualquer plugin nativo.
+
+O plugin nativo é sempre uma segunda opção. Se estiver inválido, indisponível ou ainda não aprovado, mantém a skill instalada. Não substituas automaticamente a primeira tentativa por uma configuração MCP manual.
+
 Usa apenas a conta autorizada e as informações fornecidas pelo utilizador.
 
 ## Regra permanente de memória

@@ -6,6 +6,7 @@
 
   <p>
     <img alt="Estado: testes" src="https://img.shields.io/badge/estado-testes-F4B928?style=for-the-badge&labelColor=111721" />
+    <img alt="Instalação: Skill primeiro" src="https://img.shields.io/badge/instalação-Skill%20primeiro-F4B928?style=for-the-badge&labelColor=111721" />
     <img alt="Protocolo MCP" src="https://img.shields.io/badge/protocolo-MCP-6F7CFF?style=for-the-badge&labelColor=111721" />
     <img alt="Multi agente" src="https://img.shields.io/badge/agentes-multi--agente-22B89A?style=for-the-badge&labelColor=111721" />
   </p>
@@ -66,9 +67,9 @@ O protocolo não é ativado para conversa casual ou perguntas gerais sem relaç�
 
 | Agente ou interface | Forma de ligação | Utilização |
 |---|---|---|
-| ChatGPT | Plugin ou conector | Consultar e organizar mapas numa conversa |
-| Codex | Plugin deste repositório e MCP | Trabalhar em projetos com memória persistente |
-| OpenCode | MCP remoto | Ler e atualizar mapas a partir do ambiente de desenvolvimento |
+| ChatGPT | Skill primeiro, plugin nativo quando disponível | Consultar e organizar mapas numa conversa |
+| Codex | Skill primeiro, plugin nativo quando disponível | Trabalhar em projetos com memória persistente |
+| OpenCode | Skill primeiro, ligação compatível depois | Ler e atualizar mapas a partir do ambiente de desenvolvimento |
 | Claude | Cliente MCP compatível | Consultar contexto e guardar resultados autorizados |
 | Alexa | Skill ligada à conta | Consultar e organizar conhecimento por voz |
 | Outros agentes | MCP remoto | Qualquer cliente que suporte Streamable HTTP e autenticação Bearer |
@@ -91,34 +92,71 @@ O servidor MCP é partilhado, mas cada pedido é resolvido dentro da conta autor
 
 ## Instalação para testes
 
-### Codex e ChatGPT Desktop
+### Ordem obrigatória: Skill primeiro
+
+A primeira tentativa deve ser sempre instalar a **Skill Forge Mind**. Não comeces pela configuração manual do MCP e não bloqueies a instalação da skill à espera da aprovação de um plugin nativo.
+
+Copia este prompt e envia-o ao teu agente:
+
+```text
+Instala o Forge Mind a partir deste repositório:
+https://github.com/Ricoandrade1/forge-mind-agent
+
+Segue esta ordem obrigatória:
+
+1. Primeiro, usa o instalador de skills disponível no teu ambiente.
+2. Instala ou copia a skill localizada em plugins/forge-mind/skills/forge-mind para a pasta permanente de skills do cliente.
+3. Se o cliente aceitar a skill de configuração, instala também plugins/forge-mind/skills/setup.
+4. Confirma que a skill Forge Mind aparece como instalada e que o ficheiro SKILL.md pode ser lido.
+5. Só depois tenta instalar o plugin nativo Forge Mind, caso este cliente já o aceite.
+6. Se o plugin nativo aparecer como inválido, indisponível ou ainda não aprovado, mantém a skill instalada. Não troques automaticamente para uma instalação MCP manual.
+7. Depois liga a minha conta Forge Mind pelo fluxo seguro do cliente e testa listando os meus mapas.
+8. Nunca peças nem mostres senhas, chaves ou tokens na conversa.
+
+A instalação só está concluída quando a skill estiver disponível. A ligação da conta só está confirmada quando list_maps responder.
+```
+
+### O que o agente deve fazer
+
+1. Detetar o mecanismo de instalação de skills do cliente.
+2. Copiar a skill para a localização permanente suportada pelo cliente.
+3. Ler a skill instalada e ativar o protocolo de memória.
+4. Confirmar a instalação antes de tentar qualquer plugin nativo.
+5. Tratar o plugin nativo como segunda opção.
+6. Usar configuração MCP manual apenas quando a skill já estiver instalada, o cliente exigir essa ligação e o utilizador autorizar.
+
+### Plugin nativo, apenas depois da Skill
+
+Nos clientes que já aceitam o formato de plugin deste repositório:
 
 ```bash
 codex plugin marketplace add Ricoandrade1/forge-mind-agent
 codex plugin add forge-mind@forge-labs
 ```
 
-Depois da instalação:
+Se o cliente responder que o plugin é inválido ou não está aprovado, não consideres a instalação falhada. Mantém a skill e continua com as capacidades já disponíveis no cliente.
+
+### Ligar a conta
+
+Depois de confirmar a skill:
 
 1. Abre [Ligar o meu agente](https://mind.forgelabs.pt/#app/ligar-agente).
 2. Entra na tua conta Forge Mind.
-3. Gera uma chave pessoal para o cliente que estás a testar.
-4. Cola a chave apenas no campo seguro de autenticação do cliente.
+3. Usa o fluxo seguro oferecido pelo cliente.
+4. Nunca coloques uma chave numa conversa, commit, issue ou ficheiro do projeto.
 5. Pede ao agente: `Lista os meus mapas do Forge Mind.`
 
-Nunca coloques a chave numa conversa, commit, issue ou ficheiro do projeto.
+### Clientes que exigem uma ligação MCP manual
 
-### Outros clientes MCP
-
-Servidor remoto:
+A configuração manual abaixo é uma alternativa posterior, não é o primeiro passo de instalação:
 
 ```text
 https://mcp-forgemind.forgelabs.pt/mcp
 ```
 
-Transporte: `streamable-http`
+Transporte: `streamable-http`.
 
-Autenticação: `Authorization: Bearer` no campo seguro do cliente.
+Autenticação: `Authorization: Bearer` apenas no campo seguro do cliente.
 
 [Abrir o guia completo de testes](docs/TESTING.md)
 

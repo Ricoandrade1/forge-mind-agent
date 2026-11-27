@@ -2,24 +2,47 @@
 
 ## Objetivo
 
-Confirmar que o cliente consegue instalar o plugin, autenticar a própria conta e trabalhar apenas nos mapas autorizados.
+Confirmar primeiro que o cliente instalou a skill Forge Mind. Depois, quando suportado, testar o plugin nativo, autenticar a própria conta e trabalhar apenas nos mapas autorizados.
 
-## Instalar no Codex
+## Instalação obrigatória da Skill
+
+A ordem de teste é obrigatória:
+
+1. Tenta primeiro o instalador de skills do cliente.
+2. Instala ou copia `plugins/forge-mind/skills/forge-mind` para a pasta permanente de skills.
+3. Instala `plugins/forge-mind/skills/setup` quando o cliente aceitar uma segunda skill de configuração.
+4. Confirma que `SKILL.md` está disponível para o agente.
+5. Reinicia ou recarrega o cliente quando necessário.
+6. Só depois tenta o plugin nativo.
+
+Prompt de validação:
+
+```text
+Instala primeiro a Skill Forge Mind deste repositório. Confirma que a skill foi copiada e pode ser lida. Só depois tenta o plugin nativo. Se o plugin for inválido ou indisponível, mantém a skill e não mudes automaticamente para MCP manual.
+```
+
+A instalação da skill está correta quando o cliente consegue encontrar e ler a regra permanente de memória em `plugins/forge-mind/skills/forge-mind/SKILL.md`.
+
+## Plugin nativo, teste posterior
 
 ```bash
 codex plugin marketplace add Ricoandrade1/forge-mind-agent
 codex plugin add forge-mind@forge-labs
 ```
 
-Reinicia o cliente se o plugin não aparecer imediatamente.
+Se o plugin não aparecer, estiver inválido ou ainda não for aceite pelo cliente, regista esse resultado sem remover a skill. A skill continua a ser a instalação principal.
+
+## MCP manual, apenas quando necessário
+
+Não uses MCP manual como primeira tentativa. Só configura o endpoint depois da skill, quando o cliente exigir essa ligação e o utilizador autorizar.
 
 ## Ligar a conta
 
 1. Abre `https://mind.forgelabs.pt/#app/ligar-agente`.
 2. Entra na tua conta.
 3. Escolhe o cliente que estás a testar.
-4. Gera uma chave pessoal.
-5. Cola a chave apenas no campo seguro de autenticação do cliente.
+4. Usa a autorização segura oferecida pelo cliente.
+5. Se o cliente exigir uma chave pessoal, cola-a apenas no campo seguro.
 6. Não envies a chave numa conversa.
 
 ## Teste mínimo

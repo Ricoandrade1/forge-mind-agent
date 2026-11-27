@@ -8,19 +8,27 @@ O plugin liga clientes de inteligência artificial ao Forge Mind através de um 
 
 ```mermaid
 flowchart TB
-  A["Cliente de IA"] --> B["Plugin e Skill"]
-  B --> C["MCP remoto"]
-  C --> D["Autorização da conta"]
-  D --> E["Mapas e cards"]
+  A["Cliente de IA"] --> B["Skill instalada primeiro"]
+  B --> C["Plugin nativo, quando disponível"]
+  B --> D["Ligação compatível do cliente"]
+  C --> E["Conta autorizada"]
+  D --> E
+  E --> F["Mapas e cards"]
 ```
 
 ### Cliente de IA
 
 Pode ser ChatGPT, Codex, OpenCode, Claude, Alexa ou outro cliente compatível com MCP.
 
-### Plugin e Skill
+### Skill primeiro
 
-O plugin fornece:
+A skill é sempre a primeira tentativa de instalação. O agente deve copiá-la para a localização permanente suportada pelo cliente, confirmar que pode ler o respetivo `SKILL.md` e ativar o protocolo de memória. A instalação não deve começar por um MCP manual.
+
+### Plugin nativo depois
+
+O plugin nativo é uma segunda opção. Só deve ser tentado depois da skill e apenas quando o cliente aceitar este formato. Um resultado inválido, indisponível ou ainda não aprovado não remove nem invalida a skill instalada.
+
+O pacote fornece:
 
 - Configuração do servidor MCP.
 - Instruções de onboarding.
@@ -60,6 +68,14 @@ O token nunca deve aparecer em conversas, logs públicos, commits ou issues.
 6. O servidor valida a conta e os argumentos.
 7. O Forge Mind guarda a alteração.
 8. O agente relê o mapa e confirma o resultado.
+
+## Ordem de instalação
+
+1. Instalar ou copiar a skill.
+2. Confirmar que a skill está disponível e legível.
+3. Ativar a regra permanente de memória.
+4. Tentar o plugin nativo apenas quando suportado.
+5. Configurar uma ligação MCP manual apenas quando o cliente exigir, depois da skill e com autorização do utilizador.
 
 ## Ciclo de memória automática
 
