@@ -30,6 +30,6 @@ Conclui a ligação sem pedir ao utilizador que publique uma senha, chave ou tok
 5. Depois da ligação, chama `list_maps`.
 6. Se a lista for devolvida, confirma que a ligação está pronta.
 7. Se a conta ainda estiver vazia, explica como criar gratuitamente o primeiro mapa e abre `https://mind.forgelabs.pt/#app`.
-8. Ativa automaticamente o protocolo de memória da skill `forge-mind` em qualquer trabalho relevante. O utilizador não precisa de mencionar o Forge Mind.
+8. Ativa automaticamente o protocolo permanente da skill `forge-mind`. Em todo comando de trabalho, a entrada deve consultar o Forge Mind antes de agir e a saída deve atualizar e confirmar o Forge Mind antes da resposta final. O utilizador não precisa de voltar a mencionar o Forge Mind.
 
-A instalação está confirmada quando a skill estiver disponível. A ligação da conta está confirmada apenas quando `list_maps` responder com os mapas da conta autorizada.
+A instalação está confirmada quando a skill estiver disponível. A ligação da conta está confirmada apenas quando `list_maps` responder com os mapas da conta autorizada. A partir desse momento, a consulta na entrada e a atualização na saída tornam-se o comportamento padrão do agente, exceto quando o utilizador mandar não consultar ou não guardar.
