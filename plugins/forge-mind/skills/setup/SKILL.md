@@ -24,8 +24,8 @@ Nunca declares a skill instalada sem confirmar a cópia ou o registo no cliente.
 ## Fluxos específicos
 
 - No Claude.ai, não clones para uma pasta temporária. Orienta uma única ação: enviar o ficheiro `https://mind.forgelabs.pt/forge-mind-skill.zip` em Definições, Capacidades, Skills, Upload Skill. Depois da confirmação, continua automaticamente para o conector da conta.
-- No Gemini CLI, instala em `~/.gemini/skills/forge-mind` ou `~/.agents/skills/forge-mind`, executa `/skills reload` e confirma com `/skills list`. Depois adiciona a ligação MCP compatível e testa `list_maps`.
-- No Gemini web, não afirmes que instalaste uma Skill local. Se Aplicações personalizadas estiver disponível, adiciona o servidor do Forge Mind. Caso contrário, informa o limite e encaminha diretamente para o Gemini CLI.
+- No Gemini CLI, clona o repositório para uma pasta normal e liga apenas `plugins/forge-mind/skills/forge-mind` com `/skills link <caminho>/plugins/forge-mind/skills/forge-mind --scope user`. Executa `/skills reload`, confirma com `/skills list`, adiciona a ligação MCP compatível e testa `list_maps`.
+- No Gemini App móvel ou web, nunca mostres comandos de terminal, `git clone`, caminhos `~/.gemini`, `/skills` ou `gemini mcp`. A ligação é configurada no Gemini web em Definições, Aplicações ligadas, Aplicações personalizadas. Se esse menu não existir, informa que a conta ou região ainda não suporta a ligação no Gemini App.
 - Em Codex, OpenCode e clientes com escrita persistente, copia primeiro a Skill e confirma o `SKILL.md`.
 - Em qualquer cliente, não pares apenas porque a primeira forma de instalação não está disponível.
 
